@@ -45,7 +45,11 @@ namespace OpeningHelper
             "consider this a blessing",
             "where did you even find this",
             "scattered across space and time... is the person who asked",
-            "helpful!"
+            "helpful!",
+            "sent to Bydgoszcz",
+            "i love Poland",
+            "crazy to think 2002 was 6 years ago",
+            "opening cases at 3am!!! (gone wrong)"
         };
 
         public OHMain()
