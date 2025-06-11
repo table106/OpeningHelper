@@ -82,7 +82,7 @@ namespace OpeningHelper
             if (!int.TryParse(textBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
             {
                 textBox.Focus();
-                MessageBox.Show("Expected decimal point value", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Expected whole number", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
             else if (result <= 0)
             {
