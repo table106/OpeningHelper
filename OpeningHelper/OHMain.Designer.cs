@@ -108,7 +108,7 @@
             // Calculate
             // 
             this.Calculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Calculate.Location = new System.Drawing.Point(155, 222);
+            this.Calculate.Location = new System.Drawing.Point(150, 222);
             this.Calculate.Name = "Calculate";
             this.Calculate.Size = new System.Drawing.Size(89, 29);
             this.Calculate.TabIndex = 7;
@@ -120,7 +120,7 @@
             // 
             this.FinalPrice.AutoSize = true;
             this.FinalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.FinalPrice.Location = new System.Drawing.Point(93, 304);
+            this.FinalPrice.Location = new System.Drawing.Point(107, 290);
             this.FinalPrice.Name = "FinalPrice";
             this.FinalPrice.Size = new System.Drawing.Size(0, 24);
             this.FinalPrice.TabIndex = 8;
