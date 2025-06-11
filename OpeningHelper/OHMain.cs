@@ -53,44 +53,51 @@ namespace OpeningHelper
             SplashText.Text = splash[random.Next(splash.Length)];
         }
 
+        /// <summary>
+        /// Try to parse text from a <c>TextBox</c>.
+        /// </summary>
+        /// <param name="textBox">Text source</param>
+        /// <param name="result">Result of parsing</param>
+        /// <returns><c>true</c> if succeeded, <c>false</c></returns>
+        private bool ParseTextBox(TextBox textBox, out double result)
+        {
+            if (!double.TryParse(textBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
+            {
+                textBox.Focus();
+                MessageBox.Show("Expected decimal point value for key price", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Try to parse text from a <c>TextBox</c>.
+        /// </summary>
+        /// <param name="textBox">Text source</param>
+        /// <param name="result">Result of parsing</param>
+        /// <returns><c>true</c> if succeeded, <c>false</c></returns>
+        private bool ParseTextBox(TextBox textBox, out int result)
+        {
+            if (!int.TryParse(textBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
+            {
+                textBox.Focus();
+                MessageBox.Show("Expected decimal point value for key price", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            } 
+            else if (result <= 0)
+            {
+                textBox.Focus();
+                MessageBox.Show("Price cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
         private void Calculate_Click(object sender, EventArgs e)
         {
-            if (!double.TryParse(KeyPrice.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double keyPrice))
-            {
-                KeyPrice.Focus();
-                MessageBox.Show("Expected decimal point value for key price", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (keyPrice <= 0)
-            {
-                KeyPrice.Focus();
-                MessageBox.Show("Price cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!double.TryParse(CasePrice.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double casePrice))
-            {
-                CasePrice.Focus();
-                MessageBox.Show("Expected decimal point value for case price", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (casePrice <= 0)
-            {
-                CasePrice.Focus();
-                MessageBox.Show("Price cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!int.TryParse(CaseCount.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out int caseCount))
-            {
-                CaseCount.Focus();
-                MessageBox.Show("Expected integer (whole number)", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (caseCount <= 0)
-            {
-                CaseCount.Focus();
-                MessageBox.Show("Count cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            ParseTextBox(KeyPrice, out double keyPrice);
+            ParseTextBox(CasePrice, out double casePrice);
+            ParseTextBox(CaseCount, out int caseCount);
             FinalPrice.Text = "Final price: " + (keyPrice * caseCount + casePrice * caseCount).ToString();
         }
     }
