@@ -64,7 +64,13 @@ namespace OpeningHelper
             if (!double.TryParse(textBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
             {
                 textBox.Focus();
-                MessageBox.Show("Expected decimal point value for key price", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Expected decimal point value", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (result <= 0)
+            {
+                textBox.Focus();
+                MessageBox.Show("Price cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -81,13 +87,13 @@ namespace OpeningHelper
             if (!int.TryParse(textBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
             {
                 textBox.Focus();
-                MessageBox.Show("Expected decimal point value for key price", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Expected decimal point value", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             } 
             else if (result <= 0)
             {
                 textBox.Focus();
-                MessageBox.Show("Price cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Count cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
