@@ -50,17 +50,11 @@ namespace OpeningHelper
         public OHMain()
         {
             InitializeComponent();
-            GenerateSplashText();
-        }
-
-        public void GenerateSplashText()
-        {
             SplashText.Text = splash[random.Next(splash.Length)];
         }
 
         private void Calculate_Click(object sender, EventArgs e)
         {
-            GenerateSplashText();
             if (!double.TryParse(KeyPrice.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double keyPrice))
             {
                 KeyPrice.Focus();
