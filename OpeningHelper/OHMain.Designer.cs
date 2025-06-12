@@ -39,6 +39,7 @@
             this.Calculate = new System.Windows.Forms.Button();
             this.FinalPrice = new System.Windows.Forms.Label();
             this.SplashText = new System.Windows.Forms.Label();
+            this.HelpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // KeyPrice
@@ -135,12 +136,25 @@
             this.SplashText.TabIndex = 9;
             this.SplashText.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // HelpButton
+            // 
+            this.HelpButton.Font = new System.Drawing.Font("Webdings", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.HelpButton.Location = new System.Drawing.Point(332, 309);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(40, 40);
+            this.HelpButton.TabIndex = 10;
+            this.HelpButton.Text = "i";
+            this.HelpButton.UseCompatibleTextRendering = true;
+            this.HelpButton.UseVisualStyleBackColor = true;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
+            // 
             // OHMain
             // 
             this.AcceptButton = this.Calculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 361);
+            this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.SplashText);
             this.Controls.Add(this.FinalPrice);
             this.Controls.Add(this.Calculate);
@@ -173,6 +187,7 @@
         private System.Windows.Forms.Button Calculate;
         private System.Windows.Forms.Label FinalPrice;
         private System.Windows.Forms.Label SplashText;
+        private System.Windows.Forms.Button HelpButton;
     }
 }
 

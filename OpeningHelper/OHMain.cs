@@ -104,5 +104,13 @@ namespace OpeningHelper
             if (!ParseTextBox(CaseCount, out int caseCount)) return;
             FinalPrice.Text = "Final price: " + (keyPrice * caseCount + casePrice * caseCount).ToString();
         }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Key price - The price of a singular key.\n" +
+                "Case price - The price of a singular case.\n" +
+                "Case count - The amount of cases to be opened.",
+                "Help menu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
