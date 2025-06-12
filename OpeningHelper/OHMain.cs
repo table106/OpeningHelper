@@ -9,13 +9,13 @@ namespace OpeningHelper
     public partial class OHMain : Form
     {
         public static readonly Random random = new Random();
-        private static readonly string[] wear = { "battle-scarred", "well worn", "field tested", "minimal wear", "factory new" };
+        private static readonly string[] WEAR = { "battle-scarred", "well worn", "field tested", "minimal wear", "factory new" };
         public static readonly string[] splash = { 
             "or you could just use a calculator",
             "gold gold gold", 
             "daring today, aren't we?",
             "99% of gamblers quit before their big win",
-            $"this text is {wear[random.Next(wear.Length)]}!",
+            $"this text is {WEAR[random.Next(WEAR.Length)]}!",
             "what do you mean i won't profit?",
             "t",
             "circle square, circle square...",
