@@ -58,18 +58,21 @@ namespace OpeningHelper
         /// </summary>
         /// <param name="textBox">Text source</param>
         /// <param name="result">Result of parsing</param>
-        private void ParseTextBox(TextBox textBox, out double result)
+        private bool ParseTextBox(TextBox textBox, out double result)
         {
             if (!double.TryParse(textBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
             {
                 textBox.Focus();
                 MessageBox.Show("Expected decimal point value", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             else if (result <= 0)
             {
                 textBox.Focus();
                 MessageBox.Show("Price cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
+            return true;
         }
 
         /// <summary>
@@ -77,25 +80,28 @@ namespace OpeningHelper
         /// </summary>
         /// <param name="textBox">Text source</param>
         /// <param name="result">Result of parsing</param>
-        private void ParseTextBox(TextBox textBox, out int result)
+        private bool ParseTextBox(TextBox textBox, out int result)
         {
             if (!int.TryParse(textBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out result))
             {
                 textBox.Focus();
                 MessageBox.Show("Expected whole number", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             } 
             else if (result <= 0)
             {
                 textBox.Focus();
                 MessageBox.Show("Count cannot be less than or 0", "Value error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
+            return true;
         }
 
         private void Calculate_Click(object sender, EventArgs e)
         {
-            ParseTextBox(KeyPrice, out double keyPrice);
-            ParseTextBox(CasePrice, out double casePrice);
-            ParseTextBox(CaseCount, out int caseCount);
+            if (!ParseTextBox(KeyPrice, out double keyPrice)) return;
+            if (!ParseTextBox(CasePrice, out double casePrice)) return;
+            if (!ParseTextBox(CaseCount, out int caseCount)) return;
             FinalPrice.Text = "Final price: " + (keyPrice * caseCount + casePrice * caseCount).ToString();
         }
     }
